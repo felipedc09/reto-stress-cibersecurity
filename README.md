@@ -1,19 +1,21 @@
-# 📊 Dashboard SECOP II - Contratos Electrónicos 2025
+# 📊 Dashboard SECOP II - Multi-Dataset Integrado
 
-Análisis y visualización interactiva de datos de contratación pública en Colombia.
+Análisis y visualización interactiva de **3 datasets de contratación pública** en Colombia con **18 preguntas respondidas**.
 
 ## 🎯 Contenido
 
-- **Dashboard Interactivo**: Análisis visual de 1,003,902 contratos públicos
-- **Análisis Detallado**: 18 preguntas respondidas sobre el dataset
-- **API Multi-Dataset**: Integración con múltiples fuentes de datos
-- **Documentación Completa**: Guías de uso y arquitectura técnica
+- **Dashboard Interactivo Multi-Dataset**: 3 fuentes de datos (Socrata + Local)
+- **Análisis Detallado**: 18 preguntas respondidas sobre contratos 2025
+- **API Multi-Dataset**: Integración con múltiples fuentes y cache
+- **Documentación Completa**: Guías de uso, consumo API y arquitectura técnica
 
 ## 🚀 Acceso Rápido
 
-- 📊 [Dashboard](./dashboard.html) - Visualización interactiva
-- 📋 [Análisis Completo](./ANALISIS_SECOP_II_RESPUESTAS.md) - 18 preguntas respondidas
+- 📊 [Dashboard](./dashboard.html) - Visualización interactiva (3 datasets)
+- 📋 [Análisis Completo](./DATASETS_INTEGRATION_REPORT.md) - 18 preguntas + 3 datasets
+- 📋 [Análisis SECOP II 2025](./ANALISIS_SECOP_II_RESPUESTAS.md) - Respuestas detalladas
 - 📖 [Documento de Entrega](./ENTREGA_FINAL.md) - Resumen ejecutivo
+- 🔗 [Guía de Consumo API](./API_CONSUMPTION_GUIDE.md) - Ejemplos cURL, JS, Python
 - ⚙️ [Configuración](./config/datasets.json) - Registry de datasets
 
 ## 📊 Estadísticas Clave
@@ -26,6 +28,41 @@ Análisis y visualización interactiva de datos de contratación pública en Col
 | Modalidad Dominante | Contratación Directa (75.7%) |
 | Valor Total Estimado | $16.15+ billones COP |
 | Participación Femenina | 43.24% |
+
+## 🔗 Los 3 Datasets Integrados
+
+### 1️⃣ **Dataset: SECOP II - Contratos Públicos** (Socrata)
+```json
+{
+  "id": "jbjy-vk9h",
+  "recordCount": "~150,000+",
+  "updateSchedule": "daily",
+  "dimensions": ["departamento", "sector", "estado_contrato", "tipo_de_contrato"]
+}
+```
+
+### 2️⃣ **Dataset: SECOP II - Documentos Electrónicos** (Socrata)
+```json
+{
+  "id": "dmgg-8hin",
+  "recordCount": "~50,000+",
+  "updateSchedule": "daily",
+  "analysis": ["por_tipo_archivo", "por_entidad", "tamaño_archivo"]
+}
+```
+
+### 3️⃣ **Dataset: SECOP II - Contratos Electrónicos 2025** (Local CSV)
+```json
+{
+  "id": "secop-contratos-local",
+  "recordCount": 1003902,
+  "variables": 84,
+  "updateSchedule": "manual",
+  "analyzed": "18 preguntas respondidas"
+}
+```
+
+**Acceso detallado**: Ver [DATASETS_INTEGRATION_REPORT.md](./DATASETS_INTEGRATION_REPORT.md)
 
 ## 📋 Top 10 Departamentos
 
@@ -40,43 +77,88 @@ Análisis y visualización interactiva de datos de contratación pública en Col
 9. 📐 Boyacá - 30,849 contratos
 10. 🌾 Tolima - 27,823 contratos
 
+## 🎯 Las 18 Preguntas Respondidas
+
+| # | Pregunta | Respuesta |
+|----|----------|-----------|
+| 1 | Número de registros | **1,003,902** |
+| 2 | Número de variables | **84** |
+| 3 | Registros 2025 | **999,490 (99.56%)** |
+| 4 | Proporción Pymes (%) | **13.20%** |
+| 5 | Número contratos Pymes | **132,479** |
+| 6 | Top 10 departamentos | Ver tabla arriba ↑ |
+| 7 | Contratos Magdalena | **32,097** |
+| 8 | Modalidad preferida | **Contratación directa** |
+| 9 | Contratos modalidad | **759,993 (75.7%)** |
+| 10 | Top 3 entidades $ | **$16.15 billones** |
+| 11 | Top 5 tipos contrato | Prestación servicios (85.76%) |
+| 12 | % tipo dominante | **85.76%** |
+| 13 | Top 3 anomalías financieras | Ministerios validados ✅ |
+| 14 | % pagos adelantados | **~5.7%** |
+| 15 | Obligaciones ambientales | **21,347 (2.1%)** |
+| 16 | ¿Pareto 80/20? | **✅ SÍ (parcial)** |
+| 17 | Brecha género | **43.24% Mujeres vs 37.67% Hombres** |
+| 18 | Anomalías datos | **6 anomalías identificadas** |
+
+**Análisis completo**: [DATASETS_INTEGRATION_REPORT.md](./DATASETS_INTEGRATION_REPORT.md)
+
 ## 🔍 Análisis Destacado
 
-### Tipos de Contrato
-- **Prestación de Servicios**: 85.76% (860,913 contratos)
+### Comparativa de Tipos de Contrato
+- **Prestación de Servicios**: 85.76% (860,913 contratos) ⭐ DOMINANTE
 - **Decreto 092 de 2017**: 4.12% (41,384 contratos)
 - **Otros**: 3.75% (37,616 contratos)
+- **Suministros**: 2.26% (22,669 contratos)
+- **Compraventa**: 1.68% (16,845 contratos)
 
-### Top 3 Entidades por Dinero
-1. 💡 Distrito Especial de Ciencia Tecnología e Innovación de Medellín: $7.19 billones
-2. ⚡ Ministerio de Minas y Energía: $5.12 billones
-3. 🏢 Departamento de Antioquia: $3.84 billones
+### Top 3 Entidades por Dinero Ejecutado
+1. 💡 Distrito Especial de Ciencia Tecnología e Innovación de Medellín: **$7.19 billones**
+2. ⚡ Ministerio de Minas y Energía: **$5.12 billones**
+3. 🏢 Departamento de Antioquia: **$3.84 billones**
 
 ### Género en Representación Legal
-- 👩 Mujeres: 43.24%
-- 👨 Hombres: 37.67%
-- ❓ No Definido: 18.82%
+- 👩 Mujeres: **43.24%** (Participación mayoritaria)
+- 👨 Hombres: **37.67%** 
+- ❓ No Definido: **18.82%**
+- 🔄 Otro: **0.26%**
+
+**Conclusión**: Brecha de género **positiva**, con mayor participación femenina en decisiones de contratación.
+
+### Principio de Pareto (80/20)
+✅ **CONFIRMADO PARCIALMENTE**
+- 20% de entidades concentran ~80% del dinero
+- Bogotá concentra 27.9% de todos los contratos
+- Top 3 departamentos: 49.3% de concentración
 
 ## 📂 Estructura del Proyecto
 
 ```
-├── dashboard.html              # Dashboard interactivo principal
-├── dashboard-app.js            # Lógica del dashboard
+├── README.md                       # Este archivo (guía general)
+├── DATASETS_INTEGRATION_REPORT.md  # 📊 NUEVO: Integración 3 datasets + 18 preguntas
+├── dashboard.html                  # Dashboard interactivo multi-dataset
+├── dashboard-app.js                # Lógica del dashboard (1300+ líneas)
 ├── config/
-│   ├── datasets.json          # Registry de datasets
-│   └── runtime.js             # Configuración de runtime
+│   ├── datasets.json              # Registry de 3 datasets
+│   └── runtime.js                 # Configuración runtime
+├── ANALISIS_SECOP_II_RESPUESTAS.md # Análisis detallado dataset local
+├── ENTREGA_FINAL.md               # Resumen ejecutivo
+├── API_CONSUMPTION_GUIDE.md       # Ejemplos de consumo API
+├── GITHUB_PAGES_SETUP.md          # Instrucciones despliegue
 ├── scripts/
 │   └── pipeline/
-│       ├── build_aggregates.py    # Pipeline de agregación
-│       └── prepare_pages_bundle.py # Generador de bundle
+│       ├── build_aggregates.py    # Pipeline DuckDB
+│       ├── prepare_pages_bundle.py # Generador bundle
+│       └── smoke_test.py          # Tests
 ├── workers/
 │   └── api/
-│       └── worker.js          # Cloudflare Worker API
+│       ├── worker.js              # Cloudflare Worker API
+│       ├── wrangler.toml          # Config Worker
+│       └── package.json
 ├── docs/
-│   ├── IMPLEMENTATION.md       # Documentación técnica
-│   └── DATASET_ONBOARDING.md   # Guía de onboarding
+│   ├── IMPLEMENTATION.md          # Arquitectura técnica
+│   └── DATASET_ONBOARDING.md      # Guía onboarding
 └── data/
-    └── SECOP_II_-_Contratos_Electrónicos_20260506.csv
+    └── SECOP_II_-_Contratos_Electrónicos_20260506.csv  # Dataset local (1M+ filas)
 ```
 
 ## 🛠️ Tecnologías
@@ -125,20 +207,28 @@ wrangler deploy
 - `GET /api/rows?domain=...&resourceId=...` - Obtener registros
 - `GET /api/aggregate?datasetId=...` - Obtener agregados
 
-## 📖 Documentación
+## � Documentación
 
-- [Análisis Completo](./ANALISIS_SECOP_II_RESPUESTAS.md) - Respuestas detalladas
+- [Reporte de Integración de Datasets](./DATASETS_INTEGRATION_REPORT.md) - Análisis completo de los 3 datasets + 18 preguntas
+- [Análisis Completo SECOP II 2025](./ANALISIS_SECOP_II_RESPUESTAS.md) - Respuestas detalladas
 - [Entrega Final](./ENTREGA_FINAL.md) - Documento de entrega
 - [Implementación Técnica](./docs/IMPLEMENTATION.md) - Arquitectura
 - [Onboarding de Datasets](./docs/DATASET_ONBOARDING.md) - Guía
+- [Guía de Consumo API](./API_CONSUMPTION_GUIDE.md) - Ejemplos
+- [Setup GitHub Pages](./GITHUB_PAGES_SETUP.md) - Instrucciones despliegue
 
 ## 🎯 Próximos Pasos
 
-- [ ] Desplegar en GitHub Pages
-- [ ] Configurar API en Cloudflare Workers
-- [ ] Agregar más datasets públicos
-- [ ] Implementar alertas automáticas
-- [ ] Crear reportes ejecutivos mensuales
+- [x] Integrar 3 datasets (Socrata + Local)
+- [x] Responder 18 preguntas analíticas
+- [x] Dashboard multi-dataset funcional
+- [x] API configurada
+- [x] Documentación completa generada
+- [x] Código en GitHub
+- [ ] Habilitar GitHub Pages en repositorio
+- [ ] Desplegar Cloudflare Worker
+- [ ] Comparativas avanzadas entre datasets
+- [ ] Alertas automáticas
 
 ## 📞 Contacto
 
