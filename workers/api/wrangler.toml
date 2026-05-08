@@ -1,0 +1,14 @@
+name = "multi-dataset-api"
+main = "worker.js"
+compatibility_date = "2026-05-08"
+
+[vars]
+# CSV/JSON aggregate artifacts exposed by static hosting.
+# Example: https://<user>.github.io/<repo>/data/aggregates
+AGGREGATES_BASE_URL = ""
+
+# Comma-separated whitelist, e.g. "www.datos.gov.co,another.domain.gov"
+ALLOWED_SOCRATA_DOMAINS = "www.datos.gov.co"
+
+# Add SOCRATA_APP_TOKEN as secret in Worker settings:
+# wrangler secret put SOCRATA_APP_TOKEN

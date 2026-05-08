@@ -1,0 +1,8 @@
+{
+  "name": "multi-dataset-api-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check worker.js"
+  }
+}

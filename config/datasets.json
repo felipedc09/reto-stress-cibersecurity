@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "defaultDataset": "jbjy-vk9h",
+  "datasets": [
+    {
+      "id": "jbjy-vk9h",
+      "name": "SECOP II - Contratos Publicos",
+      "provider": "socrata",
+      "domain": "www.datos.gov.co",
+      "resourceId": "jbjy-vk9h",
+      "enabled": true,
+      "updateSchedule": "daily",
+      "schemaHints": {
+        "dateFields": [
+          "fecha_de_firma",
+          "fecha_de_inicio_del_contrato",
+          "fecha_de_fin_del_contrato",
+          "fecha_inicio_liquidacion",
+          "fecha_fin_liquidacion"
+        ],
+        "numericFields": [
+          "valor_del_contrato",
+          "valor_pagado",
+          "valor_pendiente_de_ejecucion",
+          "dias_adicionados",
+          "nit_entidad"
+        ]
+      },
+      "analytics": {
+        "dimensions": [
+          "departamento",
+          "sector",
+          "estado_contrato",
+          "tipo_de_contrato",
+          "destino_gasto"
+        ],
+        "metrics": [
+          "count(*) as total_registros",
+          "sum(valor_del_contrato) as total_valor_contrato",
+          "sum(valor_pagado) as total_valor_pagado",
+          "avg(valor_del_contrato) as promedio_valor_contrato"
+        ]
+      }
+    },
+    {
+      "id": "dmgg-8hin",
+      "name": "SECOP II - Documentos Electronicos",
+      "provider": "socrata",
+      "domain": "www.datos.gov.co",
+      "resourceId": "dmgg-8hin",
+      "enabled": true,
+      "updateSchedule": "daily",
+      "schemaHints": {
+        "dateFields": [
+          "fecha_carga"
+        ],
+        "numericFields": [
+          "id_documento",
+          "tamanno_archivo",
+          "nit_entidad"
+        ]
+      },
+      "analytics": {
+        "dimensions": [
+          "proceso",
+          "entidad",
+          "extensi_n"
+        ],
+        "metrics": [
+          "count(*) as total_registros",
+          "avg(tamanno_archivo) as promedio_tamano_archivo",
+          "max(tamanno_archivo) as max_tamano_archivo",
+          "min(tamanno_archivo) as min_tamano_archivo"
+        ]
+      }
+    },
+    {
+      "id": "secop-contratos-local",
+      "name": "SECOP II - Contratos Electronicos (2025)",
+      "provider": "local",
+      "filePath": "SECOP_II_-_Contratos_Electrónicos_20260506.csv",
+      "enabled": true,
+      "recordCount": 1003902,
+      "variableCount": 84,
+      "updateSchedule": "manual",
+      "schemaHints": {
+        "dateFields": [
+          "Fecha de Firma",
+          "Fecha de Inicio del Contrato",
+          "Fecha de Fin del Contrato",
+          "Fecha Inicio Liquidacion",
+          "Fecha Fin Liquidacion"
+        ],
+        "numericFields": [
+          "Valor del Contrato",
+          "Valor de pago adelantado",
+          "Valor Facturado",
+          "Valor Pendiente de Pago",
+          "Valor Pagado"
+        ],
+        "booleanFields": [
+          "Es Pyme",
+          "Habilita Pago Adelantado",
+          "Obligación Ambiental",
+          "Obligaciones Postconsumo"
+        ]
+      },
+      "analytics": {
+        "dimensions": [
+          "Departamento",
+          "Modalidad de Contratacion",
+          "Tipo de Contrato",
+          "Género Representante Legal",
+          "Entidad Centralizada"
+        ],
+        "metrics": [
+          "count(*) as total_registros",
+          "sum(cast(replace(replace(\"Valor del Contrato\", '$', ''), ',', '') as decimal)) as total_valor_contrato",
+          "avg(cast(replace(replace(\"Valor del Contrato\", '$', ''), ',', '') as decimal)) as promedio_valor_contrato",
+          "count(case when \"Obligación Ambiental\" = 'Sí' then 1 end) as contratos_obligaciones_ambientales"
+        ]
+      },
+      "metadata": {
+        "period": "2025",
+        "agency": "SECOP II",
+        "recordsFor2025": 999490,
+        "lastUpdate": "2026-05-08"
+      }
+    }
+  ]
+}
