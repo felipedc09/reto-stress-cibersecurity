@@ -112,7 +112,7 @@ Análisis y visualización interactiva de **3 datasets de contratación pública
 
 ### Género en Representación Legal
 - 👩 Mujeres: **43.24%** (Participación mayoritaria)
-- 👨 Hombres: **37.67%** 
+- 👨 Hombres: **37.67%**
 - ❓ No Definido: **18.82%**
 - 🔄 Otro: **0.26%**
 
@@ -200,13 +200,3 @@ wrangler deploy
 - [x] Dashboard multi-dataset funcional
 - [x] API configurada
 - [x] Análisis final consolidado
-
-## 📞 Contacto
-
-Para preguntas o sugerencias sobre este análisis, contacta al equipo de análisis de datos.
-
----
-
-**Generado**: 8 de mayo de 2026  
-**Dataset**: SECOP II - Contratos Electrónicos 2025  
-**Estado**: ✅ LISTO PARA PRODUCCIÓN
